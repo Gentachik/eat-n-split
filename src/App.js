@@ -1,3 +1,5 @@
+import {Friend} from "./Friend";
+
 const initialFriends = [
   {
     id: 118836,
@@ -20,5 +22,20 @@ const initialFriends = [
 ];
 
 export default function App(){
-  return <div></div>
+  return (
+      <div className="app">
+        <div className="sidebar">
+          <FriendList></FriendList>
+        </div>
+      </div>);
 }
+
+function FriendList(){
+  const friends = initialFriends;
+ return <ul>
+   {friends.map(friend => (
+       <Friend friend={friend} key={friend.id}></Friend>
+   ))}
+ </ul>
+}
+
