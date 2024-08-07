@@ -1,14 +1,14 @@
 import {Button} from "../Button";
 import {useState} from "react";
 
-export function FormAddFriend( {onAddFriend}) {
+export function FormAddFriend({onAddFriend}) {
     const [name, setName] = useState("");
     const [image, setImage] = useState("https://i.pravatar.cc/48");
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        if(!name || !image) return;
+        if (!name || !image) return;
 
         const id = crypto.randomUUID();
 
