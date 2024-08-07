@@ -1,4 +1,7 @@
-import {Friend} from "./Friend";
+import {FriendList} from "./FriendList";
+import {FormAddFriend} from "./Forms/FormAddFriend";
+import {Button} from "./Button";
+import {FormSplitBill} from "./Forms/FormSplitBill";
 
 const initialFriends = [
   {
@@ -25,17 +28,11 @@ export default function App(){
   return (
       <div className="app">
         <div className="sidebar">
-          <FriendList></FriendList>
+          <FriendList initialFriends={initialFriends}></FriendList>
+          <FormAddFriend></FormAddFriend>
+          <Button>Add friend</Button>
         </div>
+        <FormSplitBill></FormSplitBill>
       </div>);
-}
-
-function FriendList(){
-  const friends = initialFriends;
- return <ul>
-   {friends.map(friend => (
-       <Friend friend={friend} key={friend.id}></Friend>
-   ))}
- </ul>
 }
 
