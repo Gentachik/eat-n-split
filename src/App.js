@@ -2,6 +2,7 @@ import {FriendList} from "./FriendList";
 import {FormAddFriend} from "./Forms/FormAddFriend";
 import {Button} from "./Button";
 import {FormSplitBill} from "./Forms/FormSplitBill";
+import {useState} from "react";
 
 const initialFriends = [
   {
@@ -25,12 +26,17 @@ const initialFriends = [
 ];
 
 export default function App(){
+  const [showAddState, setShowAddState] = useState(false);
+  function handleShowAddFriend(){
+    setShowAddState(!showAddState);
+  }
+
   return (
       <div className="app">
         <div className="sidebar">
           <FriendList initialFriends={initialFriends}></FriendList>
-          <FormAddFriend></FormAddFriend>
-          <Button>Add friend</Button>
+          {showAddState && <FormAddFriend></FormAddFriend>}
+          <Button onClick={handleShowAddFriend}>{showAddState ? 'Close' : 'Add friend'}</Button>
         </div>
         <FormSplitBill></FormSplitBill>
       </div>);
